@@ -1,0 +1,20 @@
+{
+  "name": "grandfatherson",
+  "version": "0.1.0",
+  "keywords": ["backup", "rotation", "algorithm", "snapshots" ],
+  "description": "Grandfather Father Son algorithm, useful for backup rotation",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.16.4",
+    "moment": "^2.15.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.2"
+  },
+  "scripts": {
+    "test": "mocha test/*.js"
+  },
+  "author": "Mark Stosberg <mark@rideamigos.com>",
+  "license": "BSD-3-Clause"
+}

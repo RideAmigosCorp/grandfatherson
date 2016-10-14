@@ -16,8 +16,8 @@
     "test": "mocha test/*.js"
   },
 	"repository" : {
-			"type" : "git"
-		, "url" : "https://github.com/RideAmigosCorp/grandfatherson.git"
+			"type" : "git", 
+      "url" : "https://github.com/RideAmigosCorp/grandfatherson.git"
 	},
   "author": "Mark Stosberg <mark@rideamigos.com>",
   "license": "BSD-3-Clause"

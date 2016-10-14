@@ -7,7 +7,7 @@ var _ = require('lodash');
 
 // Because JavaScript's Modulo is really a remainder.
 // Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Arithmetic_Operators
-// Ref: http://stackoverflow.com/questions/4467539/javascript-modulo-not-behaving 
+// Ref: http://stackoverflow.com/questions/4467539/javascript-modulo-not-behaving
 function mod(n, m) {
           return ((n % m) + m) % m;
 }
@@ -160,33 +160,6 @@ class Weeks extends Filter {
 const MONTHS_IN_YEAR = 12;
 
 class Months extends Filter {
-
-	// Returning the starting datetime, `number` of months before `now`.
-	// static start(options) {
-	// 	if (! options || !_.isInteger(options.number) || options.number < 0) {
-	// 		throw 'Missing or Invalid number option';
-	// 	}
-  //   if (! options.now ) {
-	// 		throw "Missing 'now' option";
-  //   }
-
-	// 	var year = options.now.year();
-	// 	var month = options.now.month() - options.number + 1;
-
-	// 	// Handle negative months
-	// 	if (month < 0) {
-	// 	  year = year + Math.floor(month/MONTHS_IN_YEAR);
-  //     month = mod(month, MONTHS_IN_YEAR)
-	// 	}
-  //   // Handle December
-  //   // XXX Not sure the JavaScript port needs this special case
-  //   var dt = this.mask(options.now);
-  //   dt.year(year);
-  //   dt.month(month);
-  //   return dt;
-	// }
-
-
   // return a datetime with the same value as `dt`, to a resolution of months
   static mask (dt) {
 		return dt.clone().startOf('month');

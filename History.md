@@ -1,4 +1,12 @@
 
+## [0.1.3] - 2016-10-14
+
+No Code Changes.
+
+### Internals
+
+ * Added .travis.yml file
+
 ## [0.1.2] - 2016-10-13
 
 No code changes.

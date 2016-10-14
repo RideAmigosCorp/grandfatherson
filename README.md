@@ -102,6 +102,9 @@ The above example is tested in the test suite.
 Incoming dates are always passed to 'moment.utc()`. If your timestamps are not in UTC, you could carefully
 check that the results are what you expect. There is no test coverage for not UTC time stamps.
 
+## Node versions supported
+
+Currently Node 4.4.x is supported. A pull request would be accepted to make it compatible with older versions.
 
 ## Author
 

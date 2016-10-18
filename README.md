@@ -1,6 +1,6 @@
-# Grandfatherson
+# grandfatherson
 
-GrandFatherSon is a backup rotation calculator that implements the
+grandfatherson is a backup rotation calculator that implements the
 [grandfather-father-son rotation scheme](http://en.wikipedia.org/wiki/Backup_rotation_scheme#Grandfather-father-son_backup).
 
 This is usually done by keeping a certain number of daily, weekly, and
@@ -13,7 +13,7 @@ of space used.
 ```javascript
       var gfs = require('grandfatherson');
 
-      var dates_to_delete = gfs.to_delete(datetimes, {
+      var datesToDelete = gfs.toDelete(datetimes, {
            days   : 7,
            weeks  : 4,
            months : 6,
@@ -25,10 +25,10 @@ of space used.
 
 ## Functions
 
-### to_delete(datetimes, options)
+### toDelete(datetimes, options)
 
 ```javascript
-     var condemed = gfs.to_delete(allDaysin1999, {
+     var condemed = gfs.toDelete(allDaysin1999, {
         days:7,
         weeks:4,
         months:3,
@@ -47,11 +47,11 @@ of space used.
    * `now` : The date to use as 'now' when calculating 'recent'. All "future" dates after this moment are kept. Expected to be a moment object. Defaults to the current moment.
    * `firstweekday` The first day of the week to consider when calculating weekly dates to keep. Defaults to Saturday. Valid values are 0-6 (Sunday-Saturday)
 
-You provide details of dates you want to keep and `to_delete` returns a filtered list of the dates with dates-to-keep removed. The values in the returned array are moment objects sorted from oldest to newest.
+You provide details of dates you want to keep and `toDelete` returns a filtered list of the dates with dates-to-keep removed. The values in the returned array are moment objects sorted from oldest to newest.
 
-### to_keep(datetimes, options)
+### toKeep(datetimes, options)
 
-The same as `to_delete` above, but returning the array of dates to keep instead of the dates to delete.
+The same as `toDelete` above, but returning the array of dates to keep instead of the dates to delete.
 
 ## How it works
 
@@ -69,13 +69,13 @@ Say you have daily backups from every day in 1999 and today is the last day of y
 backups for the last 7 days, weekly backups for the last 4 weeks, monthly backups for the last 3 months, and
 you want the `firstweekday` to be considered Saturday, because you run full backups on that day.
 
-Here you can see the backups that we would calculate *to_keep*. If you used *to_delete* instead, the result
+Here you can see the backups that we would calculate *toKeep*. If you used *toDelete* instead, the result
 be all the dates in 1999 expect these dates.
 
 ```javascript
   const SATURDAY = 6;
 
-  var survivors = to_keep(allDaysin1999, {days:7, weeks:4, months:3, firstweekday:SATURDAY, now:moment.utc('1999-12-31')})
+  var survivors = toKeep(allDaysin1999, {days:7, weeks:4, months:3, firstweekday:SATURDAY, now:moment.utc('1999-12-31')})
 
   // The result be as follows.
   survivors = [

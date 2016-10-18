@@ -6,7 +6,7 @@ var _ = require('lodash');
 // Defaults to firstdayof=week Saturday for consistency with Python's grandfatherson
 const SATURDAY = 6;
 
-function to_keep (datetimes, options) {
+function toKeep (datetimes, options) {
 
 		_.defaults(options, {
 			 years        : 0,
@@ -55,23 +55,23 @@ function to_keep (datetimes, options) {
 }
 
 // Return a set of datetimes that should be deleted, out of 'datetimes`
-function to_delete(datetimes, options) {
+function toDelete(datetimes, options) {
   
   // We can't just a function like _.difference, because moment objects can't be compared that simply
   // and the incoming values might not already be moment objects
   var seenSurvivors = {};
-  to_keep(datetimes, options).map(function (dt) {
+  toKeep(datetimes, options).map(function (dt) {
     seenSurvivors[dt.toISOString()] = true;
   })
 
   datetimes = datetimes.map(function (dt) { return moment.utc(dt) });
 
-  // The dates to delete are the ones not returned by to_keep
+  // The dates to delete are the ones not returned by toKeep
   return _.filter(datetimes, function (dt) { return !seenSurvivors[ dt.toISOString() ] });
 
 };
 
 module.exports = {
-  to_keep : to_keep,
-  to_delete : to_delete
+  toKeep : toKeep,
+  toDelete : toDelete
 };

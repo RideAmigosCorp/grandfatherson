@@ -34,11 +34,11 @@ describe('grandfatherson', function () {
     return dt.toString()
   }
 
-  describe('to_keep', function () {
-      var to_keep = gfs.to_keep;
+  describe('toKeep', function () {
+      var toKeep = gfs.toKeep;
 
       // Simulate it being the last day of the year
-     var survivors = to_keep(allDaysin1999, {days:7, weeks:4, months:3, firstweekday:SATURDAY, now:lastDayof1999})
+     var survivors = toKeep(allDaysin1999, {days:7, weeks:4, months:3, firstweekday:SATURDAY, now:lastDayof1999})
 
      var expectedDates = [
         moment.utc('1999-10-01'),
@@ -61,14 +61,14 @@ describe('grandfatherson', function () {
 			});
   });
 
-  describe('to_delete', function () {
-      var to_delete = gfs.to_delete;
+  describe('toDelete', function () {
+      var toDelete = gfs.toDelete;
     
      // Simulate it being the last day of the year
-     var condemned = to_delete(allDaysin1999, {days:7, weeks:4, months:3, firstweekday:SATURDAY, now:lastDayof1999})
+     var condemned = toDelete(allDaysin1999, {days:7, weeks:4, months:3, firstweekday:SATURDAY, now:lastDayof1999})
 
 
-    it("should return the original set missing the ones that to_keep would return", function () {
+    it("should return the original set missing the ones that toKeep would return", function () {
         expect(allDaysin1999).to.have.length(365);
         // We see above that 13 records were kept and we know there are 365 days in the year
         expect(condemned.length).to.equal(365-13);

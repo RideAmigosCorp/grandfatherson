@@ -68,8 +68,6 @@ class Filter {
 		}
 
 
-	  // datetimes = tuple(datetimes)
-
     options.now = _.defaultTo(options.now, moment.utc());
 
 	  // Always keep datetimes from the future

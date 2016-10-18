@@ -66,12 +66,17 @@ class Filter {
 		if (! options || !_.isInteger(options.number) || options.number < 0) {
 			throw 'Missing or Invalid number option';
 		}
-
+    
+	  // Deduplicate datetimes with the same mask value by keeping the oldest
+	  var sortedDateTimes = datetimes.sort(function (a,b) {
+	   if(a.isBefore(b)) return -1;
+		 if(a.isAfter(b)) return 1;
+    });
 
     options.now = _.defaultTo(options.now, moment.utc());
 
 	  // Always keep datetimes from the future
-	  var future =  _.filter(datetimes, function (dt) { return dt.isAfter(options.now);  })
+	  var future =  _.filter(sortedDateTimes, function (dt) { return dt.isAfter(options.now);  })
 
 	  if (options.number === 0) {
 	  	return future;
@@ -79,15 +84,10 @@ class Filter {
 
 	  // Don't consider datetimes from before the start
     var start = this.start(options)
-	  var valid = _.compact(_.filter(datetimes, function (dt) { return dt.isBetween(start, options.now, null, '[]') }));
+	  var valid = _.compact(_.filter(sortedDateTimes, function (dt) { return dt.isBetween(start, options.now, null, '[]') }));
 
-	  // Deduplicate datetimes with the same mask value by keeping the oldest
-	  var sortedValid = valid.sort(function (a,b) {
-	   if(a.isBefore(b)) return -1;
-		 if(a.isAfter(b)) return 1;
-    });
 	  var kept = {};
-	  sortedValid.map(function (dt) {
+	  valid.map(function (dt) {
 	  		var key = self.mask(dt).toString();
 	  		kept[key] = _.defaultTo(kept[key], dt);
 	  });

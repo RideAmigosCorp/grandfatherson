@@ -1,6 +1,6 @@
 {
   "name": "grandfatherson",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "keywords": ["backup", "rotation", "algorithm", "snapshots" ],
   "description": "Grandfather Father Son algorithm, useful for backup rotation",
   "main": "index.js",

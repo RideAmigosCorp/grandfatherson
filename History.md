@@ -1,4 +1,14 @@
 
+## [1.1.0] - 2016-10-18
+
+### Behavior change
+
+ * Default value of `now` was changed to match the timestamp of the most recent backup. This is safer, erring on the side of retaining more data. See README for details.
+
+### Documentation
+
+ * Document was improved to explain in more detail how the calculations work
+
 ## [1.0.0] - 2016-10-18
 
 ### Incompatible Changes

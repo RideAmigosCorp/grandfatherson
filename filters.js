@@ -73,7 +73,8 @@ class Filter {
 		 if(a.isAfter(b)) return 1;
     });
 
-    options.now = _.defaultTo(options.now, moment.utc());
+    // As a safety measure, default now to the most recent date.
+    options.now = _.defaultTo(options.now, _.last(sortedDateTimes));
 
 	  // Always keep datetimes from the future
 	  var future =  _.filter(sortedDateTimes, function (dt) { return dt.isAfter(options.now);  })

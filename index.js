@@ -17,7 +17,7 @@ function toKeep (datetimes, options) {
 			 hours        : 0,
 			 seconds      : 0,
 			 firstweekday : SATURDAY,
-			 now					: moment.utc(),
+			 now					: undefined, // Default is defined in the filter function. No need to duplicate it here.
 		});
 
 		

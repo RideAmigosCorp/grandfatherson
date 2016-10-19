@@ -3,6 +3,7 @@ var moment = require('moment');
 var chai = require('chai');
 var expect = chai.expect;
 
+var _ = require('lodash');
 var filters = require('../filters');
 var Seconds = filters.Seconds;
 var Minutes = filters.Minutes;
@@ -89,6 +90,7 @@ describe('Filters', function() {
 
 			expect(Seconds.filter(datetimes, {number:0, now:now})).to.eql(datetimes);
 		});
+
 
 		it('no input returns empty set', function () {
 			expect(Seconds.filter([], {number:0, now:now})).to.eql([]);
@@ -627,6 +629,22 @@ describe('Filters', function() {
 		it('no matches returns empty set', function () {
 			expect(Years.filter(datetimes, {number:0, now:now})).to.eql([]);
 		});
+
+    // If now defaulted to the current moment, all the backups would be deleted.
+    // By defaulting to the date of the newest backup, we would keep these "newest 3" by default instead.
+		it('should default "now" to the newest datetime', function () {
+			var datetimes = [
+					moment.utc({year: 2002}),
+					moment.utc({year: 2003}),
+					moment.utc({year: 2001})
+			];
+
+      var result = Years.filter(datetimes, {number:3});
+
+      expect(result.length).to.equal(3);
+			expect(_.last(result).toISOString()).to.equal(moment.utc({year: 2003}).toISOString());
+		});
+
 
 		it('for dates that end up with the same mask, return the oldest', function () {
 			var filtered = Years.filter(datetimes, {number:2, now:now});

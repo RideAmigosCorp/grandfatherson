@@ -8,20 +8,20 @@ const SATURDAY = 6;
 
 function toKeep (datetimes, options) {
 
-		_.defaults(options, {
-			 years        : 0,
-			 months       : 0,
-			 weeks        : 0,
-			 days         : 0,
-			 minutes      : 0,
-			 hours        : 0,
-			 seconds      : 0,
-			 firstweekday : SATURDAY,
-			 now					: undefined, // Default is defined in the filter function. No need to duplicate it here.
-		});
+    _.defaults(options, {
+       years        : 0,
+       months       : 0,
+       weeks        : 0,
+       days         : 0,
+       minutes      : 0,
+       hours        : 0,
+       seconds      : 0,
+       firstweekday : SATURDAY,
+       now          : undefined, // Default is defined in the filter function. No need to duplicate it here.
+    });
 
-		
-		var mightHaveDupes = _.flatten([
+
+    var mightHaveDupes = _.flatten([
             filters.Years.filter(datetimes,   {number:options.years,   now: options.now}),
             filters.Months.filter(datetimes,  {number:options.months,  now: options.now}),
             filters.Weeks.filter(datetimes,   {number:options.weeks,   now: options.now, firstweekday:options.firstweekday }),
@@ -31,14 +31,14 @@ function toKeep (datetimes, options) {
             filters.Seconds.filter(datetimes, {number:options.seconds, now: options.now})
     ]);
 
-		var toKeep = [];
+    var toKeep = [];
 
-		// You can't have dupes without at least 2
-		if (mightHaveDupes.length < 2) {
-			toKeep = mightHaveDupes;
-		}
-		// Remove duplicate dates, if any.
-		else {
+    // You can't have dupes without at least 2
+    if (mightHaveDupes.length < 2) {
+      toKeep = mightHaveDupes;
+    }
+    // Remove duplicate dates, if any.
+    else {
       mightHaveDupes = mightHaveDupes.sort(function (a ,b) {
         if (a.isBefore(b))
           return -1;
@@ -48,21 +48,21 @@ function toKeep (datetimes, options) {
         return 0;
       });
 
-			// Now remove dupes from sorted array
-		  for (var i = 0; i < mightHaveDupes.length; i++) {
-				if (! mightHaveDupes[i].isSame(mightHaveDupes[i-1])) {
-					toKeep.push(mightHaveDupes[i])
-				}
-		  }
-		}
-	
-		return toKeep;
+      // Now remove dupes from sorted array
+      for (var i = 0; i < mightHaveDupes.length; i++) {
+        if (! mightHaveDupes[i].isSame(mightHaveDupes[i-1])) {
+          toKeep.push(mightHaveDupes[i])
+        }
+      }
+    }
+
+    return toKeep;
 
 }
 
 // Return a set of datetimes that should be deleted, out of 'datetimes`
 function toDelete(datetimes, options) {
-  
+
   // We can't just a function like _.difference, because moment objects can't be compared that simply
   // and the incoming values might not already be moment objects
   var seenSurvivors = {};

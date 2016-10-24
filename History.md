@@ -1,4 +1,10 @@
 
+## [1.1.1] - 2016-10-24
+
+### Bug Fixes
+
+ * toKeep array could have contained duplicate entries if dates matched multiple filters.
+
 ## [1.1.0] - 2016-10-18
 
 ### Behavior change

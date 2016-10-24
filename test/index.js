@@ -38,7 +38,7 @@ describe('grandfatherson', function () {
       var toKeep = gfs.toKeep;
 
       // Simulate it being the last day of the year
-     var survivors = toKeep(allDaysin1999, {days:7, weeks:4, months:3, firstweekday:SATURDAY, now:lastDayof1999})
+     var survivors = toKeep(allDaysin1999, {days:8, weeks:4, months:3, firstweekday:SATURDAY, now:lastDayof1999})
 
      var expectedDates = [
         moment.utc('1999-10-01'),
@@ -47,6 +47,7 @@ describe('grandfatherson', function () {
         moment.utc('1999-12-04'),
         moment.utc('1999-12-11'),
         moment.utc('1999-12-18'),
+        moment.utc('1999-12-24'),
         moment.utc('1999-12-25'),
         moment.utc('1999-12-26'),
         moment.utc('1999-12-27'),
@@ -56,22 +57,23 @@ describe('grandfatherson', function () {
         moment.utc('1999-12-31')
       ];
 
-			it("should correctly handle {days:7, weeks:4, months:3, firstweekday:SATURDAY, now:lastDayof1999}", function () {
-	      expect(survivors.map(_toString)).to.eql(expectedDates.map(_toString));
-			});
+      it("should correctly handle {days:8, weeks:4, months:3, firstweekday:SATURDAY, now:lastDayof1999}", function () {
+        expect(survivors.map(_toString)).to.eql(expectedDates.map(_toString));
+      });
   });
 
   describe('toDelete', function () {
       var toDelete = gfs.toDelete;
-    
+
      // Simulate it being the last day of the year
-     var condemned = toDelete(allDaysin1999, {days:7, weeks:4, months:3, firstweekday:SATURDAY, now:lastDayof1999})
+     var condemned = toDelete(allDaysin1999, {days:8, weeks:4, months:3, firstweekday:SATURDAY, now:lastDayof1999})
 
 
     it("should return the original set missing the ones that toKeep would return", function () {
         expect(allDaysin1999).to.have.length(365);
-        // We see above that 13 records were kept and we know there are 365 days in the year
-        expect(condemned.length).to.equal(365-13);
+
+        // We see above that 14 records were kept and we know there are 365 days in the year
+        expect(condemned.length).to.equal(365-14);
     });
   });
 

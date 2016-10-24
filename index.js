@@ -39,11 +39,17 @@ function toKeep (datetimes, options) {
 		}
 		// Remove duplicate dates, if any.
 		else {
-		  var toKeep  = [mightHaveDupes[0]];
+      mightHaveDupes = mightHaveDupes.sort(function (a ,b) {
+        if (a.isBefore(b))
+          return -1;
+        if (a.isAfter(b))
+          return 1;
 
-		  // Starting with the 2nd result discard results if they are the same as the previous one.
-			// (Array should already be sorted from oldest->newest
-		  for (var i = 1; i < mightHaveDupes.length; i++) {
+        return 0;
+      });
+
+			// Now remove dupes from sorted array
+		  for (var i = 0; i < mightHaveDupes.length; i++) {
 				if (! mightHaveDupes[i].isSame(mightHaveDupes[i-1])) {
 					toKeep.push(mightHaveDupes[i])
 				}

@@ -28,7 +28,7 @@ of space used.
 ### toDelete(datetimes, options)
 
 ```javascript
-     var condemed = gfs.toDelete(allDaysin1999, {
+     var condemned = gfs.toDelete(allDaysin1999, {
         days:7,
         weeks:4,
         months:3,
@@ -133,7 +133,7 @@ check that the results are what you expect. There is no test coverage for not UT
 
 ## Node versions supported
 
-Currently Node 4.4.x is supported. A pull request would be accepted to make it compatible with older versions.
+Currently Node > 4.4.x is supported.
 
 ## Author
 

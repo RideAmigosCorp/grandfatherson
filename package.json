@@ -1,6 +1,6 @@
 {
   "name": "grandfatherson",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "keywords": ["backup", "rotation", "algorithm", "snapshots" ],
   "description": "Grandfather Father Son algorithm, useful for backup rotation",
   "main": "index.js",
@@ -15,10 +15,10 @@
   "scripts": {
     "test": "mocha test/*.js"
   },
-	"repository" : {
-			"type" : "git", 
+  "repository" : {
+      "type" : "git",
       "url" : "https://github.com/RideAmigosCorp/grandfatherson.git"
-	},
+  },
   "author": "Mark Stosberg <mark@rideamigos.com>",
   "license": "BSD-3-Clause"
 }

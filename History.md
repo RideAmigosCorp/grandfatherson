@@ -1,5 +1,7 @@
 
+
  * Added .drone.yml
+ * Drop support for Node < 8
 
 ## [1.1.1] - 2016-10-24
 

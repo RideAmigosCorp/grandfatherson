@@ -25,5 +25,6 @@
     "url": "https://github.com/RideAmigosCorp/grandfatherson.git"
   },
   "author": "Mark Stosberg <mark@rideamigos.com>",
-  "license": "BSD-3-Clause"
+  "license": "BSD-3-Clause",
+  "engines": { "node": ">=8" }
 }

@@ -133,7 +133,7 @@ check that the results are what you expect. There is no test coverage for not UT
 
 ## Node versions supported
 
-Currently Node > 4.4.x is supported.
+Currently Node > 8.x is supported.
 
 ## Author
 

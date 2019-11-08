@@ -1,10 +1,13 @@
 ---
 kind: pipeline
+type: docker
+
+steps:
 - name: build
-    image: node:12
-    commands:
-      - npm install
+  image: node:12
+  commands:
+  - npm install
 - name: unit-test
-    image: node:12
-    commands:
-      - npm test
+  image: node:12
+  commands:
+  - npm test
